@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>サイト制作のしくみ図解</title>
+<style>
+:root{--ink:#262626;--sub:#7a7a7a;--line:#dcdcdc;--accent:#fb8902;--bg-gray:#f4f4f4;--blue:#4a90c4;--green:#2e7d32}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"游ゴシック","Yu Gothic Medium",YuGothic,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--ink);line-height:1.9;letter-spacing:.04em;font-size:15px;background:#fff}
+.wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px}
+header{border-bottom:3px solid var(--ink);padding:18px 0;margin-bottom:8px}
+header .logo{font-size:22px;font-weight:700}
+header .logo span{color:var(--accent)}
+header .sub{font-size:12px;color:var(--sub);letter-spacing:.2em}
+h1{font-size:25px;margin:24px 0 4px;line-height:1.5}
+.meta{color:var(--sub);font-size:13px;margin-bottom:28px}
+h2{background:var(--ink);color:#fff;font-size:16px;padding:8px 14px;margin:44px 0 18px;letter-spacing:.1em}
+p{margin:10px 0}
+b{background:linear-gradient(transparent 65%,#ffe600 65%)}
+.note{background:var(--bg-gray);border-left:4px solid var(--accent);padding:12px 16px;font-size:13.5px;margin:16px 0}
+.diagram{border:1px solid var(--line);padding:10px;margin:16px 0;overflow-x:auto}
+.diagram svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0}
+.tool{border:1px solid var(--line);padding:14px 16px}
+.tool .t{font-weight:700;font-size:15px}
+.tool .t small{font-weight:400;color:var(--sub);font-size:11.5px;margin-left:6px}
+.tool .r{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:1px 8px;border-radius:2px;margin-bottom:6px}
+.tool .r.b{background:var(--blue)}
+.tool .r.g{background:var(--green)}
+.tool p{font-size:13px;margin:4px 0 0;color:#444}
+.steps{counter-reset:st;margin:16px 0}
+.step{position:relative;border:1px solid var(--line);padding:14px 16px 14px 58px;margin:10px 0;counter-increment:st}
+.step::before{content:counter(st);position:absolute;left:14px;top:14px;width:30px;height:30px;background:var(--ink);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.step .t{font-weight:700}
+.step p{font-size:13.5px;margin:4px 0 0;color:#444}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13.5px}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left}
+th{background:var(--bg-gray);white-space:nowrap}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--sub)}
+@media(max-width:640px){.tools{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">サイト制作の<span>しくみ図解</span></div>
+  <div class="sub">HOW THIS SITE IS BUILT — DetoxNewsを例に</div>
+</header>
+
+<h1>AIと無料ツールでWebメディアを作って運用する全体像</h1>
+<div class="meta">プログラミング未経験の人向け。実際に運用中のメディア「DetoxNews」（記事63本・公開11日）で使っている構成をそのまま図解する。</div>
+
+<h2>1. 全体像 — たった1つのループを回しているだけ</h2>
+
+<p>難しそうに見えるが、やっていることは<b>5工程のループが1つ</b>あるだけだ。記事を書いて、公開して、数字を見て、次の記事を決める。この繰り返しでサイトが育つ。</p>
+
+<div class="diagram">
+<svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#262626"/>
+    </marker>
+  </defs>
+  <!-- boxes -->
+  <g font-size="14" font-weight="bold" text-anchor="middle">
+    <rect x="20" y="90" width="140" height="70" fill="#fff" stroke="#262626" stroke-width="2"/>
+    <text x="90" y="120" fill="#262626">① 記事を書く</text>
+    <text x="90" y="140" font-size="11" font-weight="normal" fill="#7a7a7a">Claude Codeが執筆</text>
+
+    <rect x="195" y="90" width="140" height="70" fill="#fff" stroke="#262626" stroke-width="2"/>
+    <text x="265" y="120" fill="#262626">② 組み立て</text>
+    <text x="265" y="140" font-size="11" font-weight="normal" fill="#7a7a7a">目次等を自動更新</text>
+
+    <rect x="370" y="90" width="140" height="70" fill="#fff" stroke="#fb8902" stroke-width="3"/>
+    <text x="440" y="120" fill="#262626">③ 保管庫へ送る</text>
+    <text x="440" y="140" font-size="11" font-weight="normal" fill="#7a7a7a">GitHubにpush</text>
+
+    <rect x="545" y="90" width="140" height="70" fill="#fff" stroke="#262626" stroke-width="2"/>
+    <text x="615" y="120" fill="#262626">④ 自動で公開</text>
+    <text x="615" y="140" font-size="11" font-weight="normal" fill="#7a7a7a">サーバーに自動転送</text>
+
+    <rect x="710" y="200" width="130" height="70" fill="#f4f4f4" stroke="#4a90c4" stroke-width="2"/>
+    <text x="775" y="230" fill="#262626">読者が見る</text>
+    <text x="775" y="250" font-size="11" font-weight="normal" fill="#7a7a7a">検索・SNSから来訪</text>
+
+    <rect x="370" y="200" width="200" height="70" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+    <text x="470" y="230" fill="#262626">⑤ 数字を見る</text>
+    <text x="470" y="250" font-size="11" font-weight="normal" fill="#7a7a7a">何が検索されたかを分析</text>
+  </g>
+  <!-- arrows -->
+  <g stroke="#262626" stroke-width="2" fill="none" marker-end="url(#ar)">
+    <line x1="160" y1="125" x2="190" y2="125"/>
+    <line x1="335" y1="125" x2="365" y2="125"/>
+    <line x1="510" y1="125" x2="540" y2="125"/>
+    <path d="M685 130 Q775 140 775 195"/>
+    <line x1="705" y1="235" x2="575" y2="235"/>
+    <path d="M370 235 Q90 235 90 165"/>
+  </g>
+  <text x="255" y="290" font-size="12" fill="#fb8902" font-weight="bold">↑ ⑤の分析結果が①の「次に何を書くか」に戻る＝これがループ</text>
+</svg>
+</div>
+
+<div class="note">人間の仕事は「方針を決めること」と「OKを出すこと」だけ。執筆・修正・公開・分析の作業自体はAI（Claude Code）が実行する。</div>
+
+<h2>2. 登場するツール — 役割は3種類しかない</h2>
+
+<p>使うツールは多く見えるが、役割で分ければ「<b>作る</b>」「<b>届ける</b>」「<b>測る</b>」の3種類しかない。</p>
+
+<div class="tools">
+  <div class="tool"><span class="r">作る</span><div class="t">Claude Code<small>AI</small></div><p>制作の実行役。「◯◯の記事を書いて」と指示すると、執筆からHTML化、公開作業まで全部やる。</p></div>
+  <div class="tool"><span class="r">作る</span><div class="t">Gemini<small>AI・無料〜</small></div><p>記事のトップ画像を生成する。「白背景・線画・オレンジ」と指定して全記事のテイストを統一。</p></div>
+  <div class="tool"><span class="r">作る</span><div class="t">HTML / CSS<small>技術</small></div><p>サイトの中身そのもの。WordPressのような管理ツールは使わない「静的サイト」なので、壊れにくく表示が速い。</p></div>
+  <div class="tool"><span class="r b">届ける</span><div class="t">GitHub<small>無料</small></div><p>ファイルの保管庫。変更履歴が全部残る「タイムマシン付きの金庫」。ここに置いたものが正本になる。</p></div>
+  <div class="tool"><span class="r b">届ける</span><div class="t">GitHub Actions<small>無料</small></div><p>保管庫に変更が届いたら、自動でサーバーへファイルを転送する仕組み。手作業のアップロードはゼロになる。</p></div>
+  <div class="tool"><span class="r b">届ける</span><div class="t">エックスサーバー<small>月1,000円前後</small></div><p>サイトを24時間公開し続ける本番サーバー。この構成で唯一の固定費。独自ドメインの管理もここ。</p></div>
+  <div class="tool"><span class="r g">測る</span><div class="t">Google Search Console<small>無料</small></div><p>「どんな検索語で何回表示・クリックされたか」が分かる。次に書く記事はこのデータから決める。</p></div>
+  <div class="tool"><span class="r g">測る</span><div class="t">Google Analytics（GA4）<small>無料</small></div><p>来た人がどのページを何秒読んだか、どこから来たかが分かる。記事の質の通信簿。</p></div>
+  <div class="tool"><span class="r g">測る</span><div class="t">Bing Webmaster Tools<small>無料</small></div><p>Bing検索への登録。ChatGPTの検索がBingを参照するため、AI時代の保険として入れておく。</p></div>
+  <div class="tool"><span class="r g">測る</span><div class="t">楽天アフィリエイト<small>無料</small></div><p>商品紹介記事の収益化。リンク経由で商品が買われると報酬が入る。クリック数もここで測る。</p></div>
+</div>
+
+<h2>3. 公開のしくみ — ファイルはどう流れるか</h2>
+
+<p>いちばん「魔法」に見える部分がここ。実際は<b>ファイルのバケツリレー</b>で、逆流はない。</p>
+
+<div class="diagram">
+<svg viewBox="0 0 860 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <defs>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#fb8902"/>
+    </marker>
+  </defs>
+  <g font-size="13" font-weight="bold" text-anchor="middle">
+    <rect x="20" y="60" width="180" height="90" fill="#fff" stroke="#262626" stroke-width="2"/>
+    <text x="110" y="90">自分のパソコン</text>
+    <text x="110" y="112" font-size="11" font-weight="normal" fill="#7a7a7a">マスターのフォルダで</text>
+    <text x="110" y="130" font-size="11" font-weight="normal" fill="#7a7a7a">Claude Codeが記事を編集</text>
+
+    <rect x="270" y="60" width="180" height="90" fill="#fff" stroke="#262626" stroke-width="2"/>
+    <text x="360" y="90">GitHub</text>
+    <text x="360" y="112" font-size="11" font-weight="normal" fill="#7a7a7a">クラウド上の保管庫</text>
+    <text x="360" y="130" font-size="11" font-weight="normal" fill="#7a7a7a">全ファイル＋変更履歴</text>
+
+    <rect x="520" y="60" width="180" height="90" fill="#fff" stroke="#262626" stroke-width="2"/>
+    <text x="610" y="90">エックスサーバー</text>
+    <text x="610" y="112" font-size="11" font-weight="normal" fill="#7a7a7a">本番の公開サーバー</text>
+    <text x="610" y="130" font-size="11" font-weight="normal" fill="#7a7a7a">rentalloungeomiya.com</text>
+
+    <rect x="750" y="72" width="90" height="66" fill="#f4f4f4" stroke="#4a90c4" stroke-width="2"/>
+    <text x="795" y="102">読者</text>
+    <text x="795" y="122" font-size="11" font-weight="normal" fill="#7a7a7a">スマホ・PC</text>
+  </g>
+  <g stroke="#fb8902" stroke-width="2.5" fill="none" marker-end="url(#ar2)">
+    <line x1="200" y1="105" x2="265" y2="105"/>
+    <line x1="450" y1="105" x2="515" y2="105"/>
+    <line x1="700" y1="105" x2="745" y2="105"/>
+  </g>
+  <g font-size="11.5" fill="#fb8902" font-weight="bold" text-anchor="middle">
+    <text x="233" y="92">push</text>
+    <text x="233" y="185" fill="#7a7a7a" font-weight="normal">「保管庫に送る」の合図</text>
+    <text x="483" y="92">自動転送</text>
+    <text x="483" y="185" fill="#7a7a7a" font-weight="normal">GitHub Actionsが実行（約30秒）</text>
+    <text x="722" y="92">閲覧</text>
+  </g>
+</svg>
+</div>
+
+<p>ポイントは真ん中にGitHubを挟むこと。サーバーに直接ファイルを置く方式と違い、<b>「いつ・何を・なぜ変えたか」が全部記録に残る</b>ので、失敗してもいつでも巻き戻せる。</p>
+
+<h2>4. 記事1本ができるまで — 実際の手順</h2>
+
+<div class="steps">
+  <div class="step"><div class="t">ネタを決める（人間＋AI）</div><p>Search Consoleを開き「表示されているのにクリックされていない検索語」「順位が付き始めた検索語」を探す。勘ではなくデータでネタを選ぶ。</p></div>
+  <div class="step"><div class="t">記事を書く（AI）</div><p>Claude Codeに「この検索語向けの記事を書いて」と指示。サイト共通の型（冒頭に結論→本文→FAQ→関連記事リンク）に沿ったHTMLが出来上がる。</p></div>
+  <div class="step"><div class="t">画像を作る（AI）</div><p>Geminiでトップ画像を生成。テイスト指定を毎回同じにして、サイト全体の見た目を揃える。</p></div>
+  <div class="step"><div class="t">組み立てる（自動）</div><p>ビルドスクリプトを1回実行すると、トップページの新着一覧・カテゴリページ・月別アーカイブ・検索エンジン向けの地図（sitemap）が全部自動で更新される。手で直すのは記事本体だけ。</p></div>
+  <div class="step"><div class="t">公開する（自動）</div><p>GitHubにpushすると約30秒で本番サイトに反映。アップロード作業は存在しない。</p></div>
+  <div class="step"><div class="t">数字を見て次を決める（人間＋AI）</div><p>数日後にSearch ConsoleとGA4を確認。当たった記事の周辺を深掘りし、外れた記事はタイトルを直す。ここが工程1に戻る。</p></div>
+</div>
+
+<h2>5. 費用 — 固定費はサーバー代だけ</h2>
+
+<table>
+<tr><th>項目</th><th>費用</th><th>備考</th></tr>
+<tr><td>エックスサーバー</td><td>月1,000円前後</td><td>唯一の固定費。ドメイン代込みの目安</td></tr>
+<tr><td>GitHub / Actions</td><td>無料</td><td>この規模なら無料枠で十分</td></tr>
+<tr><td>Google系の計測ツール</td><td>無料</td><td>Search Console・GA4・Bingすべて</td></tr>
+<tr><td>Claude Code / Gemini</td><td>各サービスの利用料</td><td>AI利用分。人を雇うより桁違いに安い</td></tr>
+</table>
+
+<p>WordPressの有料テーマも、デザイナーへの外注費も、更新代行費もかからない。<b>「静的サイト＋AI＋無料インフラ」がこの構成の核</b>だ。</p>
+
+<h2>6. 用語ミニ辞典</h2>
+
+<table>
+<tr><th>用語</th><th>意味</th></tr>
+<tr><td>静的サイト</td><td>あらかじめ作ったHTMLファイルをそのまま配るだけのサイト。仕組みが単純なので速くて壊れにくい</td></tr>
+<tr><td>リポジトリ</td><td>GitHub上の保管庫1つぶんの単位。サイト1つ＝リポジトリ1つ</td></tr>
+<tr><td>push（プッシュ）</td><td>パソコンで変えたファイルをGitHubの保管庫に送ること</td></tr>
+<tr><td>デプロイ</td><td>ファイルを本番サーバーに反映して公開すること。この構成ではpushすると自動で起きる</td></tr>
+<tr><td>ビルド</td><td>記事を追加したとき、目次や一覧ページを組み立て直すこと。スクリプトが自動でやる</td></tr>
+<tr><td>インデックス</td><td>Googleがページを検索結果に載せられるよう登録すること。公開から数日かかる</td></tr>
+<tr><td>SEO</td><td>検索結果で見つけてもらいやすくする工夫の総称</td></tr>
+<tr><td>sitemap / llms.txt</td><td>検索エンジン向け・生成AI向けの「サイトの地図」ファイル。ビルドで自動生成される</td></tr>
+</table>
+
+<footer>
+サイト制作のしくみ図解 — 実例: DetoxNews（rentalloungeomiya.com）。このページは noindex。
+</footer>
+
+</div>
+</body>
+</html>
