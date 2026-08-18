@@ -43,7 +43,9 @@ li{margin:5px 0}
 .tl .d{font-weight:700;font-size:13px;color:var(--accent)}
 .tl .t{font-size:13.5px}
 footer{margin-top:60px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--sub)}
-@media(max-width:640px){.kpi{grid-template-columns:repeat(2,1fr)}.bar-row .lbl{width:105px;font-size:11px}}
+.d-up{color:#1a7f37;font-weight:700}.d-down{color:#b3261e;font-weight:700}.d-flat{color:var(--sub);font-weight:700}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border:1px solid var(--line);border-radius:10px;color:var(--sub);margin-left:6px;vertical-align:1px}
+@media(max-width:640px){.kpi{grid-template-columns:repeat(2,1fr)}.bar-row .lbl{width:105px;font-size:11px}table{font-size:12.5px}th,td{padding:6px 7px}}
 </style>
 </head>
 <body>
@@ -51,138 +53,161 @@ footer{margin-top:60px;border-top:1px solid var(--line);padding-top:16px;font-si
 
 <header>
   <div class="logo">Detox<span>News</span> 成長レポート</div>
-  <div class="sub">GROWTH REPORT — 2026.08.03 LAUNCH → 2026.08.17</div>
+  <div class="sub">GROWTH REPORT — 2026.08.03 LAUNCH → 2026.08.18</div>
 </header>
 
-<h1>本番ローンチから2週間の進捗・効果分析と今後の方針</h1>
-<div class="meta">対象: rentalloungeomiya.com（DetoxNews）＋ shindan.rentalloungeomiya.com（睡眠力診断）／データ: Search Console 2026-07-19〜08-15（28日・ドメインプロパティ・最終更新8/17）・GA4 過去28日（8/17取得）・楽天アフィリエイト今月累計（8/17取得）・Amazonアソシエイト（8/16更新分）</div>
+<h1>ローンチから15日 — 表示は伸び、クリックが伸びていない</h1>
+<div class="meta">対象: rentalloungeomiya.com（DetoxNews）＋ shindan.rentalloungeomiya.com（睡眠力診断）／データ取得日 2026-08-18（4管理画面をすべて当日実測）: Search Console 2026-07-20〜08-16（28日・ドメインプロパティ・最終更新は取得の4時間前）／GA4 2026-07-21〜08-17（過去28日）／楽天アフィリエイト 8月累計・日別／Amazonアソシエイト 今月累計（最終更新 8/17）</div>
 
 <h2>1. サマリー</h2>
 <div class="kpi">
-  <div class="box"><div class="n">68本</div><div class="l">公開記事数（ローンチ時9本）</div></div>
-  <div class="box"><div class="n">7,600</div><div class="l">検索表示回数（28日）</div></div>
-  <div class="box"><div class="n">160</div><div class="l">検索クリック（28日）</div></div>
-  <div class="box"><div class="n">8.0位</div><div class="l">平均掲載順位</div></div>
+  <div class="box"><div class="n">69本</div><div class="l">公開記事数（ローンチ時9本）</div></div>
+  <div class="box"><div class="n">9,261</div><div class="l">検索表示回数（28日）</div></div>
+  <div class="box"><div class="n">181</div><div class="l">検索クリック（28日）</div></div>
+  <div class="box"><div class="n">8.1位</div><div class="l">平均掲載順位</div></div>
 </div>
-<p>8月3日の本番公開から2週間で、記事数を9本から68本まで積み上げた。検索は<b>28日合計160クリックのうち125クリック（78%）が直近7日に集中</b>しており、伸びが続いている。直近単日は20クリック超・表示1,500前後。平均掲載順位8.0位はドメイン転用直後のメディアとして良好。CTRはサイト全体で2.1%だが、クエリ棚卸しの結果、単体の目標指標としては扱わない方針に変更した（詳細は3-2）。</p>
+<p>公開15日目。表示回数は28日で9,261まで伸び、直近7日だけで7,884（28日合計の85%）を占める。一方でクリックは28日181・7日127にとどまり、<b>サイト全体のCTRは前回集計の2.1%から1.95%（直近7日は1.6%）へ低下した</b>。表示の伸びがクリックに変換されていない。今日の分析の主題はこの乖離の内訳であり、結論は「表示を稼ぐページとクリックを取るページが完全に分離している」である（3-2）。</p>
+
+<table>
+<tr><th>指標</th><th class="num">前回（8/17）</th><th class="num">今回（8/18）</th><th class="num">差分</th></tr>
+<tr><td>検索表示回数（28日）</td><td class="num">7,600</td><td class="num">9,261</td><td class="num"><span class="d-up">+1,661</span></td></tr>
+<tr><td>検索クリック（28日）</td><td class="num">160</td><td class="num">181</td><td class="num"><span class="d-up">+21</span></td></tr>
+<tr><td>平均CTR（28日）</td><td class="num">2.1%</td><td class="num">1.95%</td><td class="num"><span class="d-down">−0.15pt</span></td></tr>
+<tr><td>GA4 セッション（28日）</td><td class="num">493</td><td class="num">559</td><td class="num"><span class="d-up">+66</span></td></tr>
+<tr><td>うち Organic Social</td><td class="num">29</td><td class="num">29</td><td class="num"><span class="d-flat">±0</span></td></tr>
+<tr><td>楽天アフィリエイト クリック</td><td class="num">15</td><td class="num">15</td><td class="num"><span class="d-flat">±0</span></td></tr>
+<tr><td>Amazonアソシエイト クリック</td><td class="num">0</td><td class="num">0</td><td class="num"><span class="d-flat">±0</span></td></tr>
+<tr><td>公開記事数</td><td class="num">68本</td><td class="num">69本</td><td class="num"><span class="d-up">+1</span></td></tr>
+</table>
 
 <h2>2. 進捗タイムライン</h2>
 <div class="tl">
   <div class="ev"><div class="d">8/3</div><div class="t">本番公開（記事9本・診断サブドメイン同時公開）。GitHub Pagesテスト版から移行</div></div>
   <div class="ev"><div class="d">8/4</div><div class="t">GitHub Actions による FTP 自動デプロイ構築（push だけで本番反映する体制に）</div></div>
   <div class="ev"><div class="d">8/5</div><div class="t">カテゴリナビ・月別アーカイブ・人気記事枠・ファビコン設置。Search Console 登録・sitemap 送信</div></div>
-  <div class="ev"><div class="d">8/7</div><div class="t">index を10件ページャー式に変更。「準備中」カード解消</div></div>
   <div class="ev"><div class="d">8/8</div><div class="t">SEO 一斉強化（全記事に canonical / OGP / JSON-LD、主要記事に FAQ スキーマ）。楽天アフィリエイトカード設置。計41本</div></div>
   <div class="ev"><div class="d">8/9</div><div class="t">Bing Webmaster 登録（ChatGPT 検索対策の土台）。計44本</div></div>
   <div class="ev"><div class="d">8/11</div><div class="t">勝ちクラスタ×季節×GEO 用語で6本追加。計50本</div></div>
   <div class="ev"><div class="d">8/12</div><div class="t">全ページダークモード実装</div></div>
   <div class="ev"><div class="d">8/14</div><div class="t">URL 正規化（http/www の301統一）・llms.txt 設置・CTR 低迷記事のタイトル改稿・冒頭結論ブロック導入。Search Console データ起点の新記事6本公開。計63本</div></div>
-  <div class="ev"><div class="d">8/15</div><div class="t">タイムロッキングコンテナ2本（タイプ別ピラー＋箱型全網羅）で商品比較クラスタを新設。人気記事枠を実データ上位5本に刷新。記事内テーブルのスマホ・PC表示を改善。計65本</div></div>
-  <div class="ev"><div class="d">8/15</div><div class="t">アフィリエイトを「需要計測の計器」に再設計。全カードに商品カテゴリ属性を付与し、GA4にカード単位のクリックイベント（affiliate_click）とカスタムディメンション5種を実装。手元ケア・目元ケアのカード6枚を新設。Amazonアソシエイト開設（2ボタン方式で楽天と併記）</div></div>
-  <div class="ev"><div class="d">8/16</div><div class="t">Search Console全372クエリの棚卸しを実施し、結果に基づく既存記事改修5件（ニトリ×ワークマン直接比較／ドパガキの意図別3セクション／夏休み中の昼夜逆転／ドーパミン系の相互リンク補完／アプリ記事タイトルにアプリ正式名を反映）。箱型比較のAmazon版を新規公開し、楽天版とタイトルを統一</div></div>
-  <div class="ev"><div class="d">8/16</div><div class="t">勝ちパターン「状況×当事者性」の隣接展開として新記事2本（受験生のリベンジ夜更かし・夜勤明けのリベンジ夜更かし）を公開。計68本</div></div>
+  <div class="ev"><div class="d">8/15</div><div class="t">タイムロッキングコンテナ2本で商品比較クラスタを新設。アフィリエイトを「需要計測の計器」に再設計し、GA4にカード単位クリック計測（affiliate_click）とカスタムディメンション5種を実装。Amazonアソシエイト開設。計65本</div></div>
+  <div class="ev"><div class="d">8/16</div><div class="t">Search Console全372クエリの棚卸しと改修5件。箱型比較のAmazon版を公開。勝ちパターン「状況×当事者性」の隣接展開2本（受験生・夜勤）。計68本</div></div>
+  <div class="ev"><div class="d">8/17</div><div class="t">アプリ「スマホをやめれば魚が育つ」の単体ガイドを公開（App Store実確認でAndroid非対応・新旧2バージョンを確定）。既存4選記事の「iOS/Android」誤記を修正。計69本</div></div>
 </div>
 
-<h2>3. 効果分析 — 何が当たっているか</h2>
+<h2>3. 効果分析 — 表示とクリックの乖離</h2>
 
-<h3>3-1. 検索チャネルの立ち上がり</h3>
-<p>28日間の検索パフォーマンスはクリック160・表示7,600・CTR 2.1%・平均8.0位。<b>直近7日だけで125クリック・6,670表示</b>と、28日合計の約8割が最終週に集中しており、立ち上がりが続いている。流入はほぼ日本国内・スマホ中心。</p>
-<p>直近7日のページ別で動きがあったのは<b>「スマホをやめられるアプリ4選」の13クリック・355表示（サイト2位に浮上）</b>。8/16にタイトルへアプリ正式名（スマホをやめれば魚が育つ・Forest）を入れた記事で、指名需要の受け皿として機能し始めている。8/16公開の新記事3本（受験生・夜勤・Amazon箱型）はまだ表示に出ておらず、インデックス待ち。</p>
-
-<h3>3-2. クラスタ別の表示回数（28日・概算）</h3>
-<div class="bar-chart">
-  <div class="bar-row"><span class="lbl">リカバリーウェア系</span><div class="bar" style="width:320px"></div><span class="val">約1,100</span></div>
-  <div class="bar-row"><span class="lbl">AI系（勝手に動く等）</span><div class="bar" style="width:170px"></div><span class="val">約580</span></div>
-  <div class="bar-row"><span class="lbl">夜更かし系</span><div class="bar" style="width:146px"></div><span class="val">約500</span></div>
-  <div class="bar-row"><span class="lbl">ドパガキ／ドーパミン系</span><div class="bar" style="width:132px"></div><span class="val">約450</span></div>
-  <div class="bar-row"><span class="lbl">旧レンスペ残骸（404）</span><div class="bar blue" style="width:79px"></div><span class="val">約270</span></div>
-</div>
-<p>勝ち筋は明確で、<b>①リカバリーウェア（商品比較）②AIトラブル解決 ③夜更かし（悩み）④ネットスラング解説</b>の4クラスタに表示が集中している。個別の成果:</p>
-<ul>
-<li><b>リカバリーウェア比較記事</b>: 655表示・17クリックでサイト最大。収益導線の核</li>
-<li><b>リベンジ夜更かし×子育て</b>: CTR 22.9%（35表示・8クリック）。切り口特化型の勝ちパターン</li>
-<li><b>ドパ廃・ドパ舌などスラング派生語</b>: 2〜3位に複数ランクイン。低競合キーワードの先行者利益</li>
-<li><b>バクネ指名検索</b>: 「バクネ」121表示2.0位などで上位安定だがCTR 0%。検索結果を実地確認した結果、<b>最上部がショッピングカルーセルの購買画面で、比較記事は構造的に選ばれない</b>ことが判明。タイトル改稿では解決しないため追撃を停止し、「bakune 原理」など検討系クエリ（CTR 6.3%）に軸足を移す</li>
-</ul>
-<div class="note"><b>8/16のクエリ棚卸し（372クエリ）で確定した方針</b> — 勝ちパターンは「状況×当事者性」の複合クエリ（例: リベンジ夜更かし×子育て CTR 20%超、サイト平均の8倍）。逆に一般知識クエリ（ドーパミンデトックス 144表示 CTR 2.1%）はAI検索のゼロクリック化で縮む面。今後の増産はこの勝ち型の隣接展開（受験生・夜勤など）に限定し、CTR単体でなく順位をそろえた比較と下流行動（アフィリクリック・診断）で判定する。</div>
-
-<h3>3-3. GA4 の流入・行動</h3>
+<h3>3-1. 検索チャネルの現在地</h3>
 <table>
-<tr><th>チャネル</th><th class="num">セッション</th><th class="num">構成比</th><th>平均エンゲージメント</th></tr>
-<tr><td>Organic Search</td><td class="num">273</td><td class="num">55%</td><td>1分03秒</td></tr>
-<tr><td>Direct</td><td class="num">177</td><td class="num">36%</td><td>28秒</td></tr>
-<tr><td>Organic Social</td><td class="num">29</td><td class="num">6%</td><td><b>1分16秒</b></td></tr>
-<tr><td>AI Assistant</td><td class="num">6</td><td class="num">1%</td><td>7秒</td></tr>
-<tr><td>Referral／その他</td><td class="num">8</td><td class="num">2%</td><td>—</td></tr>
+<tr><th>期間</th><th class="num">クリック</th><th class="num">表示</th><th class="num">CTR</th><th class="num">平均順位</th><th class="num">日次クリック</th></tr>
+<tr><td>28日（7/20〜8/16）</td><td class="num">181</td><td class="num">9,261</td><td class="num">1.95%</td><td class="num">8.1</td><td class="num">6.5</td></tr>
+<tr><td>直近7日（8/10〜8/16）</td><td class="num">127</td><td class="num">7,884</td><td class="num">1.61%</td><td class="num">8.0</td><td class="num">18.1</td></tr>
 </table>
-<p>セッション合計は493（前回集計434）。検索経由が273セッション（55%）と過半を占め、平均エンゲージメントも1分03秒に伸びた。Direct は177（36%）で、検索に依存しない直接流入が第二の柱として維持されている。AI Assistant 経由は28日で6セッションにとどまり、AI検索は現時点で流入源として機能していない（この前提で戦略を組んでいる）。アフィリカードのクリック計測（affiliate_click）は標準レポートへの反映が始まったが、<b>現在の18件はすべて実装時の動作検証によるもので、実ユーザーのカードクリックはまだ計測されていない</b>。</p>
+<p>直近7日が28日の表示の85%・クリックの70%を占め、立ち上がり自体は続いている。日次では表示1,126・クリック18.1。ただし<b>7日CTR 1.61%は28日平均1.95%より低い</b>。順位は8.0で横ばいなので、順位の悪化ではなく<b>「クリックされない種類の表示」が新規に大量流入している</b>ことが原因である。</p>
 
-<h3>3-4. 収益（楽天アフィリエイト）</h3>
+<h3>3-2. 表示上位5本が表示の40%を取りながらクリックは24%しか出していない</h3>
+<table>
+<tr><th>ページ（直近7日）</th><th class="num">クリック</th><th class="num">表示</th><th class="num">CTR</th><th class="num">順位</th><th>型</th></tr>
+<tr><td>recovery-wear-hikaku</td><td class="num">16</td><td class="num">1,043</td><td class="num">1.5%</td><td class="num">7.4</td><td>商品比較</td></tr>
+<tr><td>bakune-recovery-wear</td><td class="num">1</td><td class="num">582</td><td class="num">0.2%</td><td class="num">3.0</td><td>指名</td></tr>
+<tr><td>dopagaki</td><td class="num">4</td><td class="num">579</td><td class="num">0.7%</td><td class="num">10.9</td><td>一般知識</td></tr>
+<tr><td>dopamine-detox</td><td class="num">7</td><td class="num">489</td><td class="num">1.4%</td><td class="num">8.3</td><td>一般知識</td></tr>
+<tr><td>yasumiake-darui</td><td class="num">3</td><td class="num">488</td><td class="num">0.6%</td><td class="num">8.4</td><td>一般知識</td></tr>
+<tr><td><b>上位5本 小計</b></td><td class="num"><b>31</b></td><td class="num"><b>3,181</b></td><td class="num"><b>0.97%</b></td><td class="num">—</td><td>—</td></tr>
+<tr><td>revenge-yofukashi-kosodate</td><td class="num">6</td><td class="num">43</td><td class="num"><b>14.0%</b></td><td class="num">5.6</td><td>状況×当事者性</td></tr>
+<tr><td>sumaho-yameru-app</td><td class="num">15</td><td class="num">468</td><td class="num">3.2%</td><td class="num">6.6</td><td>指名×疑問</td></tr>
+<tr><td>smartring-hikaku</td><td class="num">8</td><td class="num">382</td><td class="num">2.1%</td><td class="num">7.8</td><td>商品比較</td></tr>
+</table>
+<div class="note"><b>今日の中心的な発見</b> — 表示上位5本は直近7日の表示の40%を占めながら、クリックは24%（31/127）しか生んでいない。平均CTRは0.97%で、サイト平均1.61%の6割。逆に「状況×当事者性」型の子育て版は43表示で6クリック（14.0%）、「指名×疑問」型のアプリ記事は468表示で15クリック（3.2%）。<b>CTRの母数を膨らませているのは一般知識クエリと純粋指名クエリで、これは記事の質ではなくクエリの性質による</b>。したがってサイト平均CTRは今後さらに下がるが、それ自体は失敗を意味しない。</div>
+<p>内訳をもう一段見ると、CTRを最も強く押し下げているのは<b>バクネ指名系の346表示・0クリック</b>（「バクネ」167表示2.0位／「バクネ パジャマ」115表示2.0位／「バクネ 効果」64表示2.2位）である。8/16に「検索結果最上部がショッピングカルーセルのため構造的に取れない」と結論した領域で、順位2位を保ったまま表示だけが積み上がり続けている。ここは追わない判断を維持する。</p>
+
+<h3>3-3. 実需シグナル — 今日新しく見えた3つ</h3>
+<ul>
+<li><b>「スマホをやめれば魚が育つ android」が7日で52表示・0クリック・6.7位</b>。Android非対応という事実を求める検索が実在する。8/17に公開した単体ガイド（sakana-ga-sodatsu）はApp Store実確認でこの答えを持っているが、Search Consoleのデータは8/16までのため<b>まだ計測に乗っていない</b>。次回集計での順位・CTRが、この記事の当否を判定する最初の材料になる</li>
+<li><b>スマートリングが第2の商品比較クラスタとして立ち上がっている</b>。総合比較記事が7日8クリック・382表示（7.8位）に加え、「ringconn soxai 比較」27表示6.7位・「soxai oura 比較」8表示・「soxai ring」8表示2.6位・「oura ring 5 サブスク」12表示と、<b>1対1比較の需要が複数クエリで既に表示を持ちながら受け皿が総合比較しかない</b>。リカバリーウェアで効いた1対1比較の型をそのまま複製できる</li>
+<li><b>ニトリ×ワークマンの1対1比較は、まだ効いていない</b>。8/16に比較セクションを追記した4変種（「リカバリー ウェア ニトリ ワークマン 比較」18表示ほか）は合計54表示・全て0クリック・順位10前後。順位が1ページ目下部から動いていないため、追記だけでは足りない。判定は次回以降に持ち越す</li>
+</ul>
+
+<h3>3-4. GA4 の流入・行動（7/21〜8/17）</h3>
+<table>
+<tr><th>チャネル</th><th class="num">セッション</th><th class="num">構成比</th><th class="num">前回比</th><th>平均エンゲージメント</th></tr>
+<tr><td>Organic Search</td><td class="num">320</td><td class="num">57.3%</td><td class="num"><span class="d-up">+47</span></td><td>58秒</td></tr>
+<tr><td>Direct</td><td class="num">192</td><td class="num">34.4%</td><td class="num"><span class="d-up">+15</span></td><td>27秒</td></tr>
+<tr><td>Organic Social</td><td class="num">29</td><td class="num">5.2%</td><td class="num"><span class="d-flat">±0</span></td><td><b>1分16秒</b></td></tr>
+<tr><td>Referral</td><td class="num">8</td><td class="num">1.4%</td><td class="num"><span class="d-flat">±0</span></td><td>40秒</td></tr>
+<tr><td>AI Assistant</td><td class="num">6</td><td class="num">1.1%</td><td class="num"><span class="d-flat">±0</span></td><td>7秒</td></tr>
+<tr><td>Unassigned</td><td class="num">3</td><td class="num">0.5%</td><td class="num">—</td><td>23秒</td></tr>
+<tr><td><b>合計</b></td><td class="num"><b>559</b></td><td class="num">100%</td><td class="num"><span class="d-up">+66</span></td><td>47秒（全体）</td></tr>
+</table>
+<p>28日セッション559、アクティブユーザー404、エンゲージメント率46.15%、イベント3,152件。増分66セッションのうち<b>62が検索とDirectで、SNS・AI経由はゼロ</b>だった。</p>
+<div class="note"><b>方針前提のズレ</b> — 8/16に「検索は収穫（月2-3h上限）、成長エンジンは指名流入（TikTok/LINE）」と整理したが、<b>Organic Social は28日窓で29セッションから1件も動いていない</b>。エンゲージメント時間は1分16秒と全チャネル最長で、来れば読まれる質はある。成長エンジンに据えたチャネルが実測で停止している以上、次の30日の時間配分はここを動かすか、前提を検索側に戻すかの二択になる。</div>
+<p>アフィリエイトのカードクリック計測（affiliate_click）は<b>21件・3ユーザー</b>（前回18件）。前回は全て実装時の動作検証だったが、ユーザー数が3に増えており、実ユーザーのクリックが混じり始めている。</p>
+
+<h3>3-5. 収益 — 楽天15クリック・Amazon 0クリック、成約は依然ゼロ</h3>
 <table>
 <tr><th>指標</th><th class="num">実績</th><th>備考</th></tr>
-<tr><td>楽天クリック（今月累計）</td><td class="num">15</td><td>設置カードは計43枚（楽天37＋Amazon6）。カテゴリ属性つき</td></tr>
-<tr><td>Amazonクリック</td><td class="num">0</td><td>設置2日目。適格販売0／3件</td></tr>
-<tr><td>売上件数</td><td class="num">0件</td><td rowspan="2">カード設置から日が浅く、判断材料はまだ不足</td></tr>
-<tr><td>成果報酬</td><td class="num">0円</td></tr>
+<tr><td>楽天クリック（8月累計）</td><td class="num">15</td><td>発生日は 8/9=2・8/13=2・8/15=7・8/17=4。設置カード計43枚（楽天37＋Amazon6）</td></tr>
+<tr><td>楽天 売上件数／成果報酬</td><td class="num">0件／¥0</td><td>CVR 0.00%</td></tr>
+<tr><td>Amazonクリック（今月）</td><td class="num">0</td><td>注文0・発送済み0。最終更新 8/17</td></tr>
+<tr><td>Amazon 適格販売</td><td class="num">0／3件</td><td>アカウント維持の条件。現ペースでは未達</td></tr>
+<tr><td>GA4 affiliate_click</td><td class="num">21件／3ユーザー</td><td>カテゴリ別分布の初回判定は累計50〜100クリック</td></tr>
 </table>
-<p>前回集計（8/14）の4クリックから11クリックまで増え、カードへの導線は機能し始めている。8/15からはアフィリエイトを収益源としてより先に<b>「どの商品カテゴリに需要があるか」を測る計器</b>として運用する体制に切り替えた。全43枚のカードに8種のカテゴリ属性（ウェア／箱型／リング／手元ケア／目元ケアなど）を付与し、GA4でカード単位のクリックを計測する。同一商品で楽天とAmazonの2ボタンを並べ、送客先の好みも取れる設計。累計50〜100クリックでカテゴリ分布の初回判定、月間100クリック到達で成約数を判断材料に昇格させる。Amazonアソシエイトは開設済みで、適格販売3件の達成がアカウント維持の条件（現在0件）。</p>
+<p>楽天のクリックは1日おきに0〜7件で、週あたり4〜11件。この速度だと<b>カテゴリ別需要の初回判定（累計50〜100クリック）に到達するのは10月前後</b>になる。記事流入が週127クリックに対しカードクリックが週数件という比率そのものが、現時点では判断材料に足りない。Amazonは設置4日目でクリック0のままで、楽天2ボタン併記の中でAmazon側が選ばれていない。</p>
 
-<h3>3-5. 課題</h3>
+<h3>3-6. 基盤の状態</h3>
 <ul>
-<li><b>CTRを単体の目標にしない方針へ変更</b> — 順位2位・CTR 0%の指名系はSERP構造（購買カルーセル）が原因で、記事側では解決できないと確定。今後は順位をそろえた比較と下流行動で判定する</li>
-<li><b>診断への転換はまだ弱い</b> — 診断の実回答は蓄積初期（8月頭時点で11件）。記事→診断の導線設計が次の主戦場</li>
-<li><b>404が流入を受けている</b> — 旧レンタルラウンジのページが28日で233表示・17クリックを集めたまま404。処遇（リダイレクト or 放置）は未決</li>
+<li><b>URL正規化は機能している</b> — http→https・www→非wwwの301をcurlで再確認済み。Search Consoleにはまだ http:// 表記の行が残る（dopagaki 202表示・smartring-hikaku 45表示など）が、これは8/14の301適用前に発生した実績の残存で、窓が進めば消える</li>
+<li><b>新記事のインデックスは進行中</b> — 8/16公開の3本のうち time-lock-box-amazon が2表示、revenge-yofukashi-jukensei が1表示で初認識。revenge-yofukashi-yakin と 8/17公開の sakana-ga-sodatsu はまだ表示ゼロ</li>
+<li><b>旧レンタルスペース資産が依然クリックを集めている</b> — /rental-lounge-urawa/ が28日で28クリック・472表示（全クリックの15%）、/relact/ が7クリック・209表示、/oomiya-manual/ が4クリック・300表示。ただし直近7日では /rental-lounge-urawa/ は2クリックまで減衰しており、メディア側の比重は上がっている。処遇は引き続き未決</li>
 </ul>
 
 <h2>4. 成長度 — コンテンツ資産の積み上げ</h2>
 <table>
-<tr><th>時点</th><th class="num">記事数</th><th>状態</th></tr>
-<tr><td>8/3（ローンチ）</td><td class="num">9本</td><td>基盤のみ。検索流入ほぼゼロ</td></tr>
-<tr><td>8/8</td><td class="num">41本</td><td>SEOメタ一斉整備。インデックス進行</td></tr>
-<tr><td>8/11</td><td class="num">50本</td><td>表示回数の急増を確認</td></tr>
-<tr><td>8/14</td><td class="num">63本</td><td>URL正規化・llms.txt・タイトル改稿などSEO/GEO基盤整備</td></tr>
-<tr><td>8/15</td><td class="num">65本</td><td>商品比較クラスタ（タイムロック）新設。直近7日で95クリック</td></tr>
-<tr><td>8/16（現在）</td><td class="num">68本</td><td>クエリ棚卸し起点の改修5件＋勝ち型の隣接展開2本＋Amazon版比較1本</td></tr>
+<tr><th>時点</th><th class="num">記事数</th><th class="num">日次表示</th><th>状態</th></tr>
+<tr><td>8/3（ローンチ）</td><td class="num">9本</td><td class="num">ほぼ0</td><td>基盤のみ</td></tr>
+<tr><td>8/8</td><td class="num">41本</td><td class="num">—</td><td>SEOメタ一斉整備。インデックス進行</td></tr>
+<tr><td>8/11</td><td class="num">50本</td><td class="num">—</td><td>表示回数の急増を確認</td></tr>
+<tr><td>8/14</td><td class="num">63本</td><td class="num">約600</td><td>URL正規化・llms.txt・タイトル改稿</td></tr>
+<tr><td>8/16</td><td class="num">68本</td><td class="num">約950</td><td>クエリ棚卸し起点の改修5件＋勝ち型の隣接展開2本</td></tr>
+<tr><td>8/18（現在）</td><td class="num">69本</td><td class="num">約1,130</td><td>アプリ単体ガイド追加。表示は伸長、CTRは低下</td></tr>
 </table>
-<p>カテゴリ構成: AIとの付き合い方14／ガジェット11／夜の行動10／脳と集中9／睡眠グッズ・睡眠科学 各8／生活リズム6／タイプ解説2。<b>1日あたり約5本ペース</b>の増産を、型のテンプレート化（結論ブロック・FAQスキーマ・クラスタ内相互リンク・ビルドスクリプトによる全ページ自動反映）で品質を保ちながら実現している。</p>
+<p>カテゴリ構成: AIとの付き合い方14／ガジェット12／夜の行動10／脳と集中9／睡眠グッズ・睡眠科学 各8／生活リズム6／タイプ解説2。増産ペースは8/16の1日5本から1日1本へ落としている。8/16のクエリ棚卸しで「穴は新規記事ではなく順位6-11の滞留」と確定したためで、意図的な減速である。</p>
 
-<h2>5. 今後の予測</h2>
-<p>単純外挿は禁物だが、現在の構造からのレンジ想定は次のとおり。直近7日の日次627表示・13.6クリックは、8月末レンジ（1,500〜2,000表示/日）に向けた通過点として順調な水準にある。</p>
+<h2>5. 今後の予測（CTR前提を実測に合わせて下方修正）</h2>
+<p>前回まで「タイトル改稿でCTR 3.5%前後へ」を前提に置いていたが、3-2で見たとおりCTRはクエリの性質で決まり記事側では動かせない部分が大きい。<b>前提CTRを1.6〜2.2%に修正</b>し、クリック予測を引き直す。</p>
 <table>
 <tr><th>時期</th><th>表示回数/日</th><th>クリック/日</th><th>前提</th></tr>
-<tr><td>8月末</td><td class="num">1,500〜2,000</td><td class="num">25〜40</td><td>63本のインデックス完了＋タイトル改稿でCTR 3.5%前後へ</td></tr>
-<tr><td>9月末</td><td class="num">2,500〜4,000</td><td class="num">50〜90</td><td>秋バテ等の季節記事が9月需要を捕捉。記事80本前後</td></tr>
-<tr><td>12月</td><td class="num">5,000〜</td><td class="num">120〜</td><td>ドメイン評価の蓄積＋冬の睡眠需要。記事100本超</td></tr>
+<tr><td>8月末</td><td class="num">1,400〜1,900</td><td class="num">25〜38</td><td>69本のインデックス完了。CTR 1.8〜2.0%</td></tr>
+<tr><td>9月末</td><td class="num">2,200〜3,500</td><td class="num">40〜70</td><td>秋バテ等の季節記事が9月需要を捕捉。記事75本前後・CTR 1.8〜2.0%</td></tr>
+<tr><td>12月</td><td class="num">4,500〜</td><td class="num">90〜</td><td>ドメイン評価の蓄積＋冬の睡眠需要。記事90本超</td></tr>
 </table>
-<div class="note">下振れ要因: ①ドメイン名とメディア内容の不一致による評価上限 ②Googleコアアップデートでの変動 ③スラング系クエリの流行終息。上振れ要因: AI検索（ChatGPT/Copilot）からの引用が本格化した場合のGEO先行者利益。</div>
+<div class="note">下振れ要因: ①ドメイン名とメディア内容の不一致による評価上限 ②Googleコアアップデートでの変動 ③スラング系クエリの流行終息 ④指名系の表示膨張によるCTRのさらなる希釈。上振れ要因: 1対1比較クラスタ（スマートリング）の順位化、AI検索からの引用の本格化。</div>
 
-<h2>6. 方針 — 次の30日</h2>
-<h3>優先度A: 勝ちクラスタの独占</h3>
+<h2>6. 方針 — 次の7日</h2>
+<h3>優先度A: スマートリングの1対1比較を作る</h3>
 <ul>
-<li>リカバリーウェア: 1対1比較・否定形・冬物へ横展開し、関連クエリの1ページ目を面で取る</li>
-<li>AIトラブル解決: 「勝手に◯◯」系の派生クエリを毎週 Search Console で拾い、記事化ループを回す</li>
-<li>スラング: ドパ系の新語を監視し、出たら48時間以内に記事化（先行者利益の維持）</li>
+<li>「RingConn × SOXAI」「SOXAI × Oura Ring」の1対1比較を1本ずつ。既に27表示・8表示・8表示の実需があり、受け皿が総合比較しかない状態を埋める</li>
+<li>型はリカバリーウェアの1対1比較を踏襲。楽天・Amazon両カードにカテゴリ属性を付けて需要計測に載せる</li>
 </ul>
-<h3>優先度B: 収益検証</h3>
+<h3>優先度B: 8/17公開分の初動を見る</h3>
 <ul>
-<li>楽天アフィリエイトのクリック・成果を記事別に毎週計測（現状30日でクリック4・売上0件）</li>
-<li>Amazonアソシエイト開設済み（済）。次の関門は適格販売3件＝アカウント維持条件。カテゴリ別クリック分布の初回判定は累計50〜100クリック時点</li>
+<li>sakana-ga-sodatsu が「スマホをやめれば魚が育つ android」（52表示・6.7位）を取れるかを次回集計で判定。取れれば「指名×疑問の単体ページ」を型として確立し、他アプリ・他製品へ展開する</li>
+<li>revenge-yofukashi-yakin / jukensei の初動も同時に確認。動かなければ隣接展開（在宅ワーク・産後）は保留する</li>
 </ul>
-<h3>優先度C: 診断への転換設計</h3>
+<h3>優先度C: Organic Social の停止をどうするか決める</h3>
 <ul>
-<li>記事末CTAの文言を記事テーマ別に最適化（現在ほぼ共通文言）</li>
-<li>診断回答が数百件に達したら、独自データ記事を公開して被リンク獲得を狙う</li>
+<li>28日窓で29セッションから動いていない。TikTok側の投稿導線を再開するか、成長エンジンの前提を検索側に戻すかを決める。放置したまま「指名流入が成長エンジン」と言い続けない</li>
+<li>エンゲージメント1分16秒（全チャネル最長）は、来れば読まれることの証拠として据え置く</li>
 </ul>
-<h3>優先度D: 基盤・GEO</h3>
+<h3>優先度D: 収益検証と基盤</h3>
 <ul>
-<li>冒頭結論ブロック（answer-first）を残りの主要記事へ展開</li>
-<li>タイトル改稿の検証は「順位をそろえた比較」で行う（バクネ指名系はSERP構造が原因と確定したため対象から除外）</li>
-<li>404流入（旧レンスペページ）の処遇決定</li>
-<li>季節先回り: 9月中に「冬季うつ・日照不足」、11月に「年末年始のリズム崩れ」を仕込む</li>
+<li>楽天は週4〜11クリックのペース。カテゴリ別判定は10月前後に後ろ倒しと見て、それまでは「クリックが付いたカテゴリだけ」を随時記録する</li>
+<li>Amazonは4日でクリック0。2ボタン併記でAmazonが選ばれていないため、ボタン順・文言の見直しを1回だけ試す。適格販売3件は現実的でないため、達成前提の設計はしない</li>
+<li>404流入（旧レンスペページ）の処遇決定。直近7日で /rental-lounge-urawa/ は2クリックまで減衰しており、判断コストの方が高くなりつつある</li>
 </ul>
 
 <footer>
-DetoxNews Growth Report — データソース: Google Search Console（2026-07-19〜08-15・ドメインプロパティ）／GA4（2026-07-18〜08-14）／楽天アフィリエイトレポート（直近30日）／cards.json（記事台帳）。このページは noindex。
+DetoxNews Growth Report — 2026-08-18 取得。データソース: Google Search Console（sc-domain:rentalloungeomiya.com・28日 2026-07-20〜08-16／直近7日 08-10〜08-16）／GA4 プロパティ「DetoxNews」（2026-07-21〜08-17・過去28日）／楽天アフィリエイトレポート（8月累計・日別）／Amazonアソシエイト おまとめレポート（今月・最終更新 2026-08-17）／cards.json（記事台帳）。4管理画面はいずれも当日実測。このページは noindex。
 </footer>
 
 </div>
